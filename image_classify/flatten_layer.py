@@ -67,4 +67,10 @@ model.fit(trainX, trainY, epochs=1)
 # DL에서 Convolutional Layer로 Feature Extraction
 # 이미지에서 중요한 정보를 추려서 복사본을 만듦 but 이미지의 특성들이 각각 다르게 강조되게!
 # -> Feature Map 만들기: 기존 layer에서 kernel 통해서 특정 부분의 중요정보 뽑아서 다음 layer로
-# ...코딩애플 convolutional layer 6:01 까지 필기
+# 참고로 tensorflow는 알아서 16종류의 kernel로 돌려줌
+
+# BUT, 단순 convolution의 문제점 -> feature의 위치가 변하면 파악 불가 (응용 x)
+# 해결책: Pooling Layer (Down Sampling) - 특징 가운데로 모아줌 - Ex) Max Pooling, Average pooling, ...
+# 즉, convolutional + pooling layer -> 특징추출 + 특징 모아줌 -> translation invariaince한 모델 (위치등에 대한 영향 X)
+# 보통 convolutional layer가 중간에 있음 CNN (convolutional neural network)라고 함
+
