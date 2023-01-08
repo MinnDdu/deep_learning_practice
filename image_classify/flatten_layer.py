@@ -45,3 +45,26 @@ model.summary()
 # Param # : layer별 학습 가능한 w, b(bias)의 개수
 
 model.fit(trainX, trainY, epochs=1)
+
+
+# *** 중요: Flatten Layer의 문제점 *** 
+# Flatten layer는    
+# [0 0...0]
+# [0 0...0]         ----->  [0 0...0, 0 0...0, 0 0...0]
+# ...               ----->  픽실들이 flatten 해지도록 해줌
+# [0 0...0]
+# 문제점: 원본 이미지가 뭉개짐 -> 응용력이 없음!
+# 동그라미가 있는 이미지 -> flatten -> 한 줄로 뭉개진 데이터
+# 동그라미가 다른 곳에 있는 다른 이미지 -> flatten -> 한 줄로 뭉개진 데이터
+# 위의 두 데이터의 공통점(동그라미)이 flatten 해지면 의미가 사라질 확률이 높음
+
+# 해결책? -> Convolution Layer
+# 1. 이미지에서 중요한 정보를 추려서 복사본들을 만듦
+# 2. 각각의 복사본에는 이미지의 중요한 feature(특징)이 담겨져 있음
+# 3. 그 데이터로 학습
+# 위 과정이 Feature Extraction (특성 추출) -> 전통적인 ML에서 많이 사용
+
+# DL에서 Convolutional Layer로 Feature Extraction
+# 이미지에서 중요한 정보를 추려서 복사본을 만듦 but 이미지의 특성들이 각각 다르게 강조되게!
+# -> Feature Map 만들기: 기존 layer에서 kernel 통해서 특정 부분의 중요정보 뽑아서 다음 layer로
+# ...코딩애플 convolutional layer 6:01 까지 필기
