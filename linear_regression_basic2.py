@@ -21,6 +21,6 @@ def loss_function(a, b):
 # learning rate (alpha) 같은 hyperparameter(사용자가 직접세팅)는 좋은 값 찾기 위해 trial and error 필요...
 opt = tf.keras.optimizers.Adam(learning_rate=0.1) 
 for i in range(500):
-    opt.minimize(loss_function, var_list=[a, b])
-    # opt.minimize(lambda:loss_function(a, b), var_list=[a, b]) -> 람다 함수 이용도 가능
+    # opt.minimize(loss_function, var_list=[a, b])
+    opt.minimize(lambda:loss_function(a, b), var_list=[a, b]) # -> 파라미터 이용 시 람다 함수 이용도 가능
     print(a.numpy(), b.numpy())

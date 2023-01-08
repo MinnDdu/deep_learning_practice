@@ -4,7 +4,7 @@ import numpy as np
 
 # 합격유무 / 영어성적 / 학점 / 지원 대학원 레벨 (1 > .. > 4) 데이터를 통해 합격 확률을 구해보자
 
-data = pd.read_csv('./predict/gpascore.csv')
+data = pd.read_csv('predict/gpascore.csv')
 # print(data)
 # 데이터에 빵꾸난 부분등이 있을대가 대다수... -> 데이터 전처리 과정 필요!
 print(data.isnull().sum()) # null 몇개인지 합산해서 나옴
