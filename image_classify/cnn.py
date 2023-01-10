@@ -20,8 +20,6 @@ testX = testX.reshape((testX.shape[0], testX.shape[1], testX.shape[2], 1))
 
 
 
-
-
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal',
 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 
