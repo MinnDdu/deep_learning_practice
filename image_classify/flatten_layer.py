@@ -25,9 +25,9 @@ class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal',
 # keras 딥러닝 1.모델 만들기 2.complie 3.fit
 # 확률예측문제 -> 마지막 아웃풋 레이어 노드 수는 카테고리 수에 맞추는게 좋음
 model = tf.keras.models.Sequential([
-    tf.keras.layers.Dense(64, input_shape=(28, 28), activation='relu'), # relu : 음수는 다 0으로
+    tf.keras.layers.Flatten(input_shape=(28, 28, 1)), # Flatten 레이어는 Dense 레이어 전에 와야함
+    tf.keras.layers.Dense(64, activation='relu'), # relu : 음수는 다 0으로
     tf.keras.layers.Dense(128, activation='relu'),
-    tf.keras.layers.Flatten(),
     tf.keras.layers.Dense(10, activation='softmax'), 
 ])
 # sigmoid: 0~1 압축 but binary(ex - 합/불) 예측문제에 사용 -> 마지막 레이어 노드 수는 1개
