@@ -21,7 +21,6 @@ class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal',
 # plt.colorbar() # color를 수치화
 # plt.show()
 
-
 # keras 딥러닝 1.모델 만들기 2.complie 3.fit
 # 확률예측문제 -> 마지막 아웃풋 레이어 노드 수는 카테고리 수에 맞추는게 좋음
 model = tf.keras.models.Sequential([

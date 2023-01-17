@@ -35,7 +35,7 @@ model = tf.keras.models.Sequential([
     tf.keras.layers.MaxPooling2D((2,2)),
     # 이미지를 모아줌
 
-    tf.keras.layers.Conv2D(32, (3, 3), padding='same', activation='relu', input_shape=(28, 28, 1)),
+    tf.keras.layers.Conv2D(32, (3, 3), padding='same', activation='relu'),
     tf.keras.layers.MaxPooling2D((2,2)),
     # conv, pool layer 한세트로 여러번 가능
 
