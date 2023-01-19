@@ -39,6 +39,22 @@ feature_columns.append(tf.feature_column.numeric_column('Parch'))
 feature_columns.append(tf.feature_column.numeric_column('Fare'))
 feature_columns.append(tf.feature_column.numeric_column('SibSp'))
 
+# (Option) Normalizer function - 데이터 0~1로 압축 (표준화)
+# numeric_columns 에 normalizer func을 넣을 수 있음 (모든 데이터에 이 함수 적용)
+
+# def normalize(data, column):
+#     max = df[f'{column}'].max()
+#     min = df[f'{column}'].mix()
+#     # 표준화한 data 리턴
+#     return (data - min) / (max -min) # 0~1로 압축됨
+
+# feature_columns.append(tf.feature_column.numeric_column('Parch', normalizer_fn=normalize))
+# feature_columns.append(tf.feature_column.numeric_column('Fare', normalizer_fn=))
+# feature_columns.append(tf.feature_column.numeric_column('SibSp', normalizer_fn=))
+
+
+
+
 # bucketized_column
 age = tf.feature_column.numeric_column('Age')
 feature_columns.append(tf.feature_column.bucketized_column(age, boundaries=[10, 20, 30, 40, 50, 60, 70, 80, 90]))
