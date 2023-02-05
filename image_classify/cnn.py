@@ -26,14 +26,20 @@ class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal',
 
 model = tf.keras.models.Sequential([
     tf.keras.layers.Conv2D(32, (3, 3), padding='same', activation='relu', input_shape=(28, 28, 1)),
-    # Convolution layer - (n개 다른 feature, (n, n)의 커널 사이즈, padding='same'사이즈 줄지 않고 같게, activation func, input_size, ...)
+    # Convolution layer - (n개 다른 feature - 32개 새로운 이미지, (m, m)의 커널 사이즈, padding='same'사이즈 줄지 않고 같게, activation func, input_size, ...)
     # relu는 음수가 모두 0으로 됨 -> rgb 값은 모두 0~255
     # input_size 관련 흔한 에러 -> ndim 에러: Conv2D는 4차원 데이터 필요 (a, b, c, d) input_size 에는 '하나의 데이터의 shape' 필요 즉, (b, c, d)가 a개 있음
     # 원래 우리 데이터는 28x28 행렬 -> (28, 28)의 shape 이었음 -> Conv2D에서 사용하려면 하나의 데이터가 3차원이어야함 -> (28, 28, 1)로 늘려준 것!
     # color 사진이면 RGB 이므로 (28, 28, 3) 이 되어야겠지?
     # [[0,0,...0], [0,0,...0], ...] -> [[[0],[0],...[0]], [[0],[0],...[0]]...]
+
+    # 단순 convolution의 문제점 - 다른 이미지에선 feature 들이 다른 곳에 위치해 있다면? (ex - 자동차의 바퀴 feature가 다른 사진에선 차의 위치, 차종이 다름에 따라 위치가 다를것)
+    # 해결책? - Pooling layer (Down Sampling, Up Sampling ...)
+    # *** Down Sampleing Layer ***
+    # 이미지를 축소 - but 단순 축소가 아닌 이미지의 중요한 부분들을 모아줌 (ex - Max Pooling - 4x4 이미지를 2x2로 줄이는데 영역별 최댓값만 가져와서 만드는 것)
     tf.keras.layers.MaxPooling2D((2,2)),
-    # 이미지를 모아줌
+ 
+    # conv, pooling layer -> 이미지 특징추출, 특징을 가운데로 모아줌 -> translation invariance 하다 == 이미지 위치에 따른 문제 해결
 
     tf.keras.layers.Conv2D(32, (3, 3), padding='same', activation='relu'),
     tf.keras.layers.MaxPooling2D((2,2)),
